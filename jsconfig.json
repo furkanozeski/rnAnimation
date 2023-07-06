@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+   "jsx": "react-native",
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@containers/*": ["./src/components/containers/*"],
+      "@uicomponents/*": ["./src/components/uicomponents/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@routers/*": ["./src/routers/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@types/*": ["./src/types/*"],
+    },     
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+}
