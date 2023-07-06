@@ -10,6 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-firebase/analytics": "^18.1.0",
+    "@react-native-firebase/app": "^18.1.0",
+    "@react-native-firebase/app-check": "^18.1.0",
+    "@react-native-firebase/firestore": "^18.1.0",
     "react": "18.2.0",
     "react-native": "0.71.3",
     "react-native-gesture-handler": "^2.12.0",

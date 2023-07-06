@@ -4,7 +4,7 @@ import { ListRenderItemInfo } from 'react-native/Libraries/Lists/VirtualizedList
 import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import TrashBinIcon from 'react-native-vector-icons/Feather';
 import CheckMarkCircle from 'react-native-vector-icons/Ionicons';
-import { NativeTouchEvent, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import SwipeableView from '../SwipeableView/SwipeableView';
 
 const mockData: Array<SwipeableViewProps> = [
@@ -75,7 +75,11 @@ const PLACEHOLDER_KEY: string = '';
 
 export default function AnimatedList() {
   const [isSelected, setIsSelected] = useState({ [PLACEHOLDER_KEY]: { selected: false, name: '' } });
+  const [listData, setListData] = useState(mockData);
 
+  const onDelete = useCallback((text: string) => {
+    setListData((element) => element.filter((e) => e.text !== text));
+  }, [listData]);
 
   const handleTouchEvent = (text: string) => {
 
@@ -138,14 +142,16 @@ export default function AnimatedList() {
         text={item.text}
         leadingIcon={renderLeadingIcon}
         trailingIcon={renderTrailingIcon}
+        onDelete={onDelete}
+        key={item.text}
       />
     ),
-    [renderLeadingIcon, renderTrailingIcon]
+    [renderLeadingIcon, renderTrailingIcon, onDelete]
   );
 
   return (
     <Animated.FlatList
-      data={mockData}
+      data={listData}
       renderItem={SwipeableViewCallback}
       style={{ flex: 1 }}
       contentContainerStyle={{
@@ -154,6 +160,7 @@ export default function AnimatedList() {
       entering={FadeInLeft}
       exiting={FadeInRight}
       alwaysBounceVertical
+      keyExtractor={(item) => item.text}
     />
   );
 }

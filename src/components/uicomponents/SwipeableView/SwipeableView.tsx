@@ -1,7 +1,7 @@
 import React from 'react';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
-  Extrapolate, interpolate, useAnimatedStyle, useSharedValue, withSpring, withTiming
+  Extrapolate, interpolate, runOnJS, runOnUI, useAnimatedStyle, useSharedValue, withSpring, withTiming
 } from 'react-native-reanimated';
 import { View } from 'react-native';
 import Dimension from '@constants/Dimension';
@@ -74,7 +74,11 @@ function SwipeableView(props: SwipeableViewProps) {
 
       if (swipeableViewTransX.value < THRESHOLD && swipeableViewTransX.value < 0) {
         swipeableViewTransX.value = withTiming(-SCREEN_WIDTH, { duration: 333 });
-        mainContainerMargin.value = withTiming(0, { duration: 333 });
+        mainContainerMargin.value = withTiming(0, { duration: 333 }, (done) => {
+          if (done && onDelete) {
+            runOnJS(onDelete)(text);
+          }
+        });
       } else {
         swipeableViewTransX.value = withTiming(0, { duration: 333 });
         swipeableViewHeight.value = withTiming(60, { duration: 333 });
@@ -84,9 +88,6 @@ function SwipeableView(props: SwipeableViewProps) {
       trashBinOpacity.value = withTiming(0, { duration: 333 });
 
     })
-    // 
-    .activeOffsetX([-10, 10])
-    .activeOffsetY([-1000, 1000]);
   return (
     <GestureDetector
       gesture={panGesture}

@@ -4,7 +4,7 @@ type SwipeableViewProps = PropsWithChildren & {
   children?: React.ReactNode | undefined,
   text: string,
   date?: Date,
-  onDelete?: () => void,
+  onDelete?: (value: string) => void,
   leadingIcon?: (value: string) => React.JSX.Element,
   trailingIcon?: () => React.JSX.Element,
 }
