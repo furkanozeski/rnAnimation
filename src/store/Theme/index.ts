@@ -25,16 +25,6 @@ const _dark = {
   background: '#000000',
 };
 
-const setThemeState = (colorSchemeName: string, state: Draft<Theme>): Draft<Theme> => { 
- 
-  const _state = { ...state };
-  
-
-  state = { ..._state };
-
-  return state;
-};
-
 const initialState: Theme = {
   themeName: 'light',
   colorScheme: {
@@ -68,7 +58,6 @@ const themeReducer = createSlice({
         state.prevColorSchema = { ...state.colorScheme };
         state.colorScheme = { ..._dark };
       }
-      state = { ...setThemeState(action.payload, state) };
     }
   }
 });

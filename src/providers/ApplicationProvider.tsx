@@ -12,7 +12,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 function ApplicationProvider(_props: AppProviderProp) {
   const { children } = _props;
   const dispatch = useAppDispatch();
-  const themeInfo = useColorScheme();
 
   const theme = useAppSelector((e) => e.theme);
   const setTheme = () => {
@@ -22,6 +21,8 @@ function ApplicationProvider(_props: AppProviderProp) {
       dispatch(SetTheme('light'));
     }
   };
+
+  console.log(theme);
   return (
     <View style={styles(theme).styleComponent}>
       <TouchableOpacity
