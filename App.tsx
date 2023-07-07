@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   StatusBar,
-  TouchableOpacity,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ApplicationProvider from '@src/providers/ApplicationProvider';

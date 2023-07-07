@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Theme from '@src/types/Theme/themeStore';
 
 const _light = {
