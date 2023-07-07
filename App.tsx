@@ -3,19 +3,23 @@ import {
   StyleSheet,
   Text,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ApplicationProvider from '@src/providers/ApplicationProvider';
-
+import { Provider } from 'react-redux'
+import { store } from '@src/store';
 
 function App(): React.JSX.Element {
 
   return (
     <GestureHandlerRootView style={styles.gestureHandlerRootViewContainer}>
-      <ApplicationProvider>
-        <StatusBar animated />
-        <Text>Enter </Text>
-      </ApplicationProvider>
+      <Provider store={store}>
+        <ApplicationProvider>
+          <StatusBar animated />
+          <Text>Enter </Text>
+        </ApplicationProvider>
+      </Provider>
     </GestureHandlerRootView>
   );
 

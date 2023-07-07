@@ -26,14 +26,9 @@ const _dark = {
 };
 
 const setThemeState = (colorSchemeName: string, state: Draft<Theme>): Draft<Theme> => { 
+ 
   const _state = { ...state };
-  if (colorSchemeName === 'light') {
-    state.prevColorSchema = { ...state.colorScheme };
-    _state.colorScheme = { ..._light };
-  } else {
-    state.prevColorSchema = { ...state.colorScheme };
-    _state.colorScheme = { ..._dark };
-  }
+  
 
   state = { ..._state };
 
@@ -63,12 +58,17 @@ const themeReducer = createSlice({
   name: 'Theme',
   initialState,
   reducers: {
-    SetTheme: (state, action: PayloadAction<Theme>) => {
-      if (state.themeName !== action.payload.themeName) {
-        state.themeName = action.payload.themeName;
-       
-        state = { ...setThemeState(action.payload.themeName, state) };
-      } 
+    SetTheme: (state, action: PayloadAction<string>) => {
+      state.themeName = action.payload;
+      
+      if (action.payload === 'light') {
+        state.prevColorSchema = { ...state.colorScheme };
+        state.colorScheme = { ..._light };
+      } else {
+        state.prevColorSchema = { ...state.colorScheme };
+        state.colorScheme = { ..._dark };
+      }
+      state = { ...setThemeState(action.payload, state) };
     }
   }
 });
