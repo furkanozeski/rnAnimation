@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import SwipeableViewProps from '@src/types/SwipeableViewPropType';
 import { ListRenderItemInfo } from 'react-native/Libraries/Lists/VirtualizedList';
-import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
+import Animated, { BounceInLeft, FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import TrashBinIcon from 'react-native-vector-icons/Feather';
 import CheckMarkCircle from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native';
@@ -157,7 +157,7 @@ export default function AnimatedList() {
       contentContainerStyle={{
         justifyContent: 'center',
       }}
-      entering={FadeInLeft}
+      entering={BounceInLeft}
       exiting={FadeInRight}
       alwaysBounceVertical
       keyExtractor={(item) => item.text}

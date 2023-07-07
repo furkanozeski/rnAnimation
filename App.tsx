@@ -1,17 +1,21 @@
 import React from 'react';
 import {
-  StatusBar,
   StyleSheet,
+  Text,
+  StatusBar,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import AnimatedList from '@src/components/uicomponents/AnimatedList/AnimatedList';
+import ApplicationProvider from '@src/providers/ApplicationProvider';
 
 
 function App(): React.JSX.Element {
+
   return (
     <GestureHandlerRootView style={styles.gestureHandlerRootViewContainer}>
-      <StatusBar animated />
-      <AnimatedList />
+      <ApplicationProvider>
+        <StatusBar animated />
+        <Text>Enter </Text>
+      </ApplicationProvider>
     </GestureHandlerRootView>
   );
 

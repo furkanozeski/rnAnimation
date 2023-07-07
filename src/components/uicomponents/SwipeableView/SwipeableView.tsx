@@ -88,6 +88,9 @@ function SwipeableView(props: SwipeableViewProps) {
       trashBinOpacity.value = withTiming(0, { duration: 333 });
 
     })
+    .activeOffsetX([-10, 10])
+    .activeOffsetY([-1000, 1000]);
+
   return (
     <GestureDetector
       gesture={panGesture}
