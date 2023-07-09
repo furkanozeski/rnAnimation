@@ -74,7 +74,8 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/require-default-props": "off",
     "prefer-arrow-callback":"off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "import/prefer-default-export": "off"
   },
   
   "overrides": [

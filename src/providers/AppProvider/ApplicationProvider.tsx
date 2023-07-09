@@ -1,10 +1,10 @@
 
 import React, { useCallback, useEffect } from 'react';
-import { View } from 'react-native';
 import AppProviderProp from '@src/types/AppProvider/AppProviderPropType';
 import { useAppDispatch } from '@src/hooks/Store';
 import { AppDispatch } from '@src/store';
-import { checkUser } from './utils';
+import { checkUser } from './handlers';
+import ThemeProvider from '../ThemeProvider/ThemeProvider';
 
 
 function ApplicationProvider(_props: AppProviderProp) {
@@ -26,9 +26,9 @@ function ApplicationProvider(_props: AppProviderProp) {
   }, [userConfig, dispatch]);
 
   return (
-    <View>
+    <ThemeProvider>
       {children}
-    </View>
+    </ThemeProvider>
   );
 }
 

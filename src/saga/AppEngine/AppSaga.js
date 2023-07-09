@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* InitializeControl(action) {
   try {
     yield put({ type: 'AppConfig/SetIsAnonymous', payload: action.payload.config.isAnonymous });
-    console.log(action.payload.config.currentUser);
   } catch (error) {
     console.log('InitializeControl error', error);
   }
