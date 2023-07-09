@@ -14,6 +14,7 @@ module.exports = {
           '@uicomponents': './src/components/uicomponents/',
           '@constants': './src/constants/',
           '@contexts': './src/contexts/',
+          '@data': './src/data',
           '@hooks': './src/hooks/',
           '@providers': './src/providers',
           '@routers': './src/routers/',
