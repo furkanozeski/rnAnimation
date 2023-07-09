@@ -1,17 +1,18 @@
 import { firebase } from '@react-native-firebase/firestore';
 import TaskModel from '@src/types/Task/TaskModel';
-import Firestore from '../FireBase/FireBase';
-
-const currentUserCollection = Firestore.firestore.collection;
+import { firestoreDB } from '../FireBase/FireBase';
 
 
 export const getTasks = async (pathWithToken: string) => {
   let result;
   try {
-    result = await currentUserCollection(pathWithToken).doc().get();
+    result = await firestoreDB
+      .collection('task').doc(pathWithToken)
+      .collection('task')
+      .get();
 
   } catch (error) {
-    console.log('error get', error);
+    // todo
   } 
   return result;
 };
@@ -28,12 +29,14 @@ export const createTask = async (token: string) => {
     update_date: firebase.firestore.FieldValue.serverTimestamp(),
     is_abolished: false
   };
-  console.log('user', token);
   try {
-    result = await firebase.firestore().collection('task').doc().set(body);
-    console.log('result => ', result);
+    result = await firestoreDB
+      .collection('task')
+      .doc(token)
+      .collection('tasks')
+      .add(body);
   } catch (error) {
-    console.log('error get', error);
+    // todo
   } 
   return result;
 };

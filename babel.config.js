@@ -18,6 +18,7 @@ module.exports = {
           '@hooks': './src/hooks/',
           '@providers': './src/providers',
           '@routers': './src/routers/',
+          '@saga': './src/saga/',
           '@screens': './src/screens/',
           '@store': './src/store/',
           '@types': './src/types/',

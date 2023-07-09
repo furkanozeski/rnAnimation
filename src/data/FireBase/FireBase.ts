@@ -1,20 +1,7 @@
-import _firebase, { ReactNativeFirebase } from '@react-native-firebase/app';
-import _auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import _firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
-abstract class IFirestore {
-  firebase: ReactNativeFirebase.FirebaseApp = _firebase.app();
+// eslint-disable-next-line import/prefer-default-export
+export const firestoreDB = firestore();
 
-  auth: FirebaseAuthTypes.Module = _auth();
-  
-  firestore: FirebaseFirestoreTypes.Module = _firestore();
-}
-
-
-const Firestore: IFirestore = {
-  firebase: _firebase.app(),
-  auth: _auth(),
-  firestore: _firestore()
-};
-
-export default Firestore;
+export const authentication = auth();
