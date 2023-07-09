@@ -1,22 +1,29 @@
 
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View } from 'react-native';
 import AppProviderProp from '@src/types/AppProvider/AppProviderPropType';
-import { useAppDispatch, useAppSelector } from '@src/hooks/Store';
-import { authentication } from '@src/data/FireBase/FireBase';
+import { useAppDispatch } from '@src/hooks/Store';
+import { AppDispatch } from '@src/store';
+import { checkUser } from './utils';
+
 
 function ApplicationProvider(_props: AppProviderProp) {
   const { children } = _props;
 
   const dispatch = useAppDispatch();
-  const appConfig = useAppSelector((s) => s.appConfig);
+
+  const userConfig = useCallback(
+    (dispatch: AppDispatch) => {
+      checkUser(dispatch);
+    },
+    [],
+  );
+
 
   useEffect(() => {
-    if (appConfig.isAnonymous === null || !appConfig.isAnonymous || appConfig.isAnonymous) {
-      dispatch({ type: 'INITIALIZE_CONTROL_CALL', payload: authentication.currentUser?.isAnonymous });
-    }
-  }, [appConfig, dispatch]);
+    userConfig(dispatch);
 
+  }, [userConfig, dispatch]);
 
   return (
     <View>

@@ -3,9 +3,10 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import AppConfig from '@src/types/AppConfig/Appconfig';
 
 const initialState: AppConfig = {
-  isAnonymous: false,
+  isAnonymous: true,
   collectionRef: null,
   collectionQuery: null,
+  currentUser: null
 };
 
 
