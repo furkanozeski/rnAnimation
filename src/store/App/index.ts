@@ -4,6 +4,8 @@ import AppConfig from '@src/types/AppConfig/Appconfig';
 
 const initialState: AppConfig = {
   isAnonymous: true,
+  showOnboarding: true,
+  navigationDestination: 'onboarding',
   collectionRef: null,
   collectionQuery: null,
   currentUser: null
@@ -22,10 +24,22 @@ const appConfigReducer = createSlice({
     },
     SetCollectionQuery: (state, action: PayloadAction<FirebaseFirestoreTypes.QuerySnapshot>) => {
       state.collectionQuery = action.payload;
+    },
+    SetOnboardingStatus: (state, action: PayloadAction<boolean>) => {
+      state.showOnboarding = action.payload;
+    },
+    SetNavigationDestination: (state, action: PayloadAction<string>) => {
+      state.navigationDestination = action.payload;
     }
   }
 });
 
-export const { SetIsAnonymous, SetCollectionRef, SetCollectionQuery } = appConfigReducer.actions;
+export const { 
+  SetIsAnonymous, 
+  SetCollectionRef, 
+  SetCollectionQuery,
+  SetOnboardingStatus,
+  SetNavigationDestination
+} = appConfigReducer.actions;
 
 export default appConfigReducer.reducer;
