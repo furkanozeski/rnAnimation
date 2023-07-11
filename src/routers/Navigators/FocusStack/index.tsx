@@ -9,6 +9,7 @@ function FocusStack() {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
       }}
     >
       <Stack.Screen

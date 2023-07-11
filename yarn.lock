@@ -1795,6 +1795,11 @@
   resolved "https://registry.npmjs.org/@react-native-firebase/firestore/-/firestore-18.1.0.tgz"
   integrity sha512-Bgpuig7FBnd7wlQvElgZVhsai3wCwxiXE4IkNOehU1pNwShntZK+KEk8d3wAuxnwt10ZUWB9YpQYjkreB1GSCw==
 
+"@react-native-firebase/storage@^18.1.0":
+  version "18.1.0"
+  resolved "https://registry.npmjs.org/@react-native-firebase/storage/-/storage-18.1.0.tgz"
+  integrity sha512-3LqITfn3b6xOFT5XFHomPNZBOm2cJIFK3tmpJPbadV21c9bbordTB3JA1RL4DT6Xx9UvD2R51sPG4DPFmySplw==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz"

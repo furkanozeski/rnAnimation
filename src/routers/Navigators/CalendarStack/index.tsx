@@ -9,6 +9,7 @@ function CalendarStack() {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
       }}
     >
       <Stack.Screen

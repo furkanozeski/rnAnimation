@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationParams, TOP_LEVEL_NAVIGATIONS } from '@src/routers/Routes';
+import Onboarding from '@src/screens/Onboarding';
 import HomeStack from '../HomeStack';
 import CalendarStack from '../CalendarStack';
 import TaskStack from '../TaskStack';
@@ -13,16 +14,16 @@ function TabBar() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarLabel: '',
         headerShown: false,
       }}
     >
       <Tab.Screen
         name={TOP_LEVEL_NAVIGATIONS.HOME}
-        component={HomeStack}
+        component={Onboarding}
         options={{
           unmountOnBlur: true,
           headerShown: false,
+          tabBarLabel: 'Home',
         }}
       />
 
@@ -32,6 +33,7 @@ function TabBar() {
         options={{
           unmountOnBlur: true,
           headerShown: false,
+          tabBarLabel: 'Calendar'
         }}
       />
 
@@ -41,6 +43,7 @@ function TabBar() {
         options={{
           unmountOnBlur: true,
           headerShown: false,
+          tabBarLabel: 'Task'
         }}
       />
 
@@ -50,6 +53,7 @@ function TabBar() {
         options={{
           unmountOnBlur: true,
           headerShown: false,
+          tabBarLabel: 'Focus'
         }}
       />
 
@@ -59,6 +63,7 @@ function TabBar() {
         options={{
           unmountOnBlur: true,
           headerShown: false,
+          tabBarLabel: 'Profile'
         }}
       />
 
