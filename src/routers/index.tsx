@@ -3,6 +3,8 @@ import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Onboarding from '@src/screens/Onboarding';
+import Login from '@src/screens/Login';
+import Register from '@src/screens/Register';
 import TabBottomNavGraph from './Navigators/TabBottomNavGraph';
 import { TOP_LEVEL_NAVIGATIONS } from './Routes';
 
@@ -14,19 +16,29 @@ function NavigationGraph() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            headerShown: false
+            headerShown: false,
           }}
         >
-          {true ? (
+          {false ? (
             <Stack.Screen
               name="root"
               component={TabBottomNavGraph}
             />
           ) : (
-            <Stack.Screen
-              name={TOP_LEVEL_NAVIGATIONS.ONBOARDING}
-              component={Onboarding}
-            />
+            <>
+              <Stack.Screen
+                name={TOP_LEVEL_NAVIGATIONS.ONBOARDING}
+                component={Onboarding}
+              />
+              <Stack.Screen
+                name="login-after-onboard"
+                component={Login}
+              />
+              <Stack.Screen
+                name="register-after-onboard"
+                component={Register}
+              />
+            </>
           )}
 
         </Stack.Navigator>

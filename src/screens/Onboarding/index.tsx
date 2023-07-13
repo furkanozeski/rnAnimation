@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   TouchableOpacity, Image, Text, View
 } from 'react-native';
@@ -21,16 +21,25 @@ const onboardConstantTexts = [
 const TOTAL_INDEX = onboardImages.length - 1;
 
 export default function Onboarding() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(currentIndex === TOTAL_INDEX);
   const theme = useContext(ThemeValueContext);
 
+  useEffect(() => {
+    if (currentIndex === TOTAL_INDEX) {
+      setIsComplete(true);
+    } else {
+      setIsComplete(false);
+    }
+  }, [currentIndex]);
+
+  console.log(isComplete);
 
   const onNext = () => {
     if (currentIndex !== TOTAL_INDEX) {
       setCurrentIndex((prev) => { prev += 1; return prev; });
     }
   };
-
   const onPrev = () => {
     if (currentIndex <= TOTAL_INDEX && currentIndex !== 0) {
       setCurrentIndex((prev) => { prev -= 1; return prev; });

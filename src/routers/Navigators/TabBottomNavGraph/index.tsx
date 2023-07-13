@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationParams, TOP_LEVEL_NAVIGATIONS } from '@src/routers/Routes';
-import Onboarding from '@src/screens/Onboarding';
 import HomeStack from '../HomeStack';
 import CalendarStack from '../CalendarStack';
 import TaskStack from '../TaskStack';
@@ -19,7 +18,7 @@ function TabBar() {
     >
       <Tab.Screen
         name={TOP_LEVEL_NAVIGATIONS.HOME}
-        component={Onboarding}
+        component={HomeStack}
         options={{
           unmountOnBlur: true,
           headerShown: false,
