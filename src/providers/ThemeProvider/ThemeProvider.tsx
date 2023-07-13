@@ -9,14 +9,14 @@ import { SetTheme } from '@src/store/Theme';
 import setTheme, { getTheme } from './handler';
 
 
-const ThemeValueContext = createContext<Theme | undefined>({ themeName: 'light', colorScheme: {}, prevColorSchema: undefined });
+export const ThemeValueContext = createContext<Theme | undefined>({ themeName: 'light', colorScheme: {}, prevColorSchema: undefined });
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const ThemeStateContext = createContext<Function | null>(null);
 
 export default function ThemeProvider({ children }: { children: ReactElement | ReactElement[] }) {
   const [shouldProceed, setShouldProceed] = useState<boolean>(false);
-  const theme = useAppSelector((state) => state.theme);
+  const theme: Theme = useAppSelector((state) => state.theme);
   const colorScheme = useColorScheme();
   const dispatch = useAppDispatch();
 

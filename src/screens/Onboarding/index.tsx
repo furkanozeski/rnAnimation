@@ -1,8 +1,9 @@
 /* eslint-disable global-require */
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   TouchableOpacity, Image, Text, View
 } from 'react-native';
+import { ThemeValueContext } from '@src/providers/ThemeProvider/ThemeProvider';
 import { styles } from './style';
 
 const onboardImages = [
@@ -21,6 +22,8 @@ const TOTAL_INDEX = onboardImages.length - 1;
 
 export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const theme = useContext(ThemeValueContext);
+
 
   const onNext = () => {
     if (currentIndex !== TOTAL_INDEX) {
@@ -34,9 +37,12 @@ export default function Onboarding() {
     }
   };
 
-
   return (
-    <View style={styles.mainContainer}>
+    <View style={[styles.mainContainer, { backgroundColor: theme?.colorScheme.background }]}>
+
+      <TouchableOpacity onPress={onPrev} style={{ alignSelf: 'flex-start', marginLeft: 16, marginTop: 8 }}>
+        <Text style={styles.prevButtonText}>Skip</Text>
+      </TouchableOpacity>
       <Image
         source={onboardImages[currentIndex]}
         style={{
@@ -53,18 +59,18 @@ export default function Onboarding() {
         ))}
       </View>
 
-      <View style={{ justifyContent: 'flex-start', alignItems: 'center', width: '95%' }}>
+      <View style={styles.textView}>
         {[...Array(onboardConstantTexts.length)].map((i, j) => (
 
           j === currentIndex && (
             <>
-              <View style={{ padding: 20, marginBottom: 30, marginTop: 34 }}>
-                <Text style={{ fontSize: 32, fontWeight: '700', color: 'black' }}>
+              <View style={styles.textViewHeadline}>
+                <Text style={[styles.headlineText, { color: theme?.colorScheme.onPrimary }]}>
                   {onboardConstantTexts[j].headline}
                 </Text>
               </View>
               <View style={{ padding: 20 }}>
-                <Text style={{ fontSize: 16, fontWeight: '400', color: 'black' }}>
+                <Text style={[styles.descriptionText, { color: theme?.colorScheme.onPrimary }]}>
                   {onboardConstantTexts[j].description}
                 </Text>
               </View>
@@ -75,10 +81,10 @@ export default function Onboarding() {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={onPrev}>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: 'black' }}>Prev</Text>
+          <Text style={styles.prevButtonText}>Prev</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={onNext}>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: 'black' }}>{currentIndex !== onboardImages.length - 1 ? 'Next' : 'Get Started'}</Text>
+        <TouchableOpacity style={[styles.nextButton, { backgroundColor: theme?.colorScheme.primary }]} onPress={onNext}>
+          <Text style={[styles.nextButtonText, { color: theme?.colorScheme.onPrimary }]}>{currentIndex !== onboardImages.length - 1 ? 'Next' : 'Get Started'}</Text>
         </TouchableOpacity>
       </View>
     </View>
