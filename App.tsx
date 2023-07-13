@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
-  StatusBar,
+  SafeAreaView
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
@@ -10,11 +10,13 @@ import CustomAppProvider from '@src/providers';
 
 function App(): React.JSX.Element {
   return (
-    <Provider store={store}>
-      <GestureHandlerRootView style={styles.gestureHandlerRootViewContainer}>
-        <CustomAppProvider />
-      </GestureHandlerRootView>
-    </Provider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Provider store={store}>
+        <GestureHandlerRootView style={styles.gestureHandlerRootViewContainer}>
+          <CustomAppProvider />
+        </GestureHandlerRootView>
+      </Provider>
+    </SafeAreaView>
   );
 
 }
