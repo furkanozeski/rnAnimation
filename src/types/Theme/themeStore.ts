@@ -12,6 +12,7 @@ type Theme = {
     surface?: string,
     onSurface?: string,
     background?: string,
+    textColor: string,
     error?: string,
     warn?: string,
   },

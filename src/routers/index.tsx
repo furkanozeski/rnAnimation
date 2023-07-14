@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Onboarding from '@src/screens/Onboarding';
 import Login from '@src/screens/Login';
 import Register from '@src/screens/Register';
+import Intro from '@src/screens/Onboarding/intro/intro';
 import TabBottomNavGraph from './Navigators/TabBottomNavGraph';
 import { TOP_LEVEL_NAVIGATIONS } from './Routes';
 
@@ -29,6 +30,10 @@ function NavigationGraph() {
               <Stack.Screen
                 name={TOP_LEVEL_NAVIGATIONS.ONBOARDING}
                 component={Onboarding}
+              />
+              <Stack.Screen
+                name="intro"
+                component={Intro}
               />
               <Stack.Screen
                 name="login-after-onboard"

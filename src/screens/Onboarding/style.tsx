@@ -63,5 +63,45 @@ export const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     fontWeight: '400',
-  }
+  },
+  introScreenMainContainer: {
+    flex: 1,
+    backgroundColor: 'red'
+  },
+  introScreenTextWrapperViewContainer: {
+    alignItems: 'center',
+    paddingTop: 70,
+  },
+  introScreenHeadlineText: {
+    fontSize: 32,
+    fontWeight: '800',
+  },
+  introScreenDescriptionText: {
+    fontSize: 16,
+    fontWeight: '500',
+    textAlign: 'center',
+    marginTop: 40
+  },
+  introScreenButtonViewContainer: {
+    height: '60%',
+    justifyContent: 'flex-end',
+    marginHorizontal: 20,
+  },
+  introScreenLoginButton: {
+    alignItems: 'center',
+    paddingVertical: 20,
+    borderRadius: 8,
+  },
+  introScreenCreateAccountButton: {
+    alignItems: 'center',
+    marginVertical: 20,
+    paddingVertical: 20,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  introScreenCountinueAsAnonButton: {
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+
 });

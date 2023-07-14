@@ -11,6 +11,8 @@ const _light = {
   surface: '#A7A2A9',
   onSurface: '#303438',
   background: '#FFFFFF',
+  textColor: '#000000',
+
 };
 
 const _dark = {
@@ -23,6 +25,7 @@ const _dark = {
   surface: '#121212',
   onSurface: '#C6C6C6',
   background: '#000000',
+  textColor: '#FFFFFF',
 };
 
 const initialState: Theme = {
@@ -37,6 +40,7 @@ const initialState: Theme = {
     surface: '#A7A2A9',
     onSurface: '#303438',
     background: '#FFFFFF',
+    textColor: '#000000',
     warn: '#C17817',
     error: '#B20D30',
   },

@@ -4,6 +4,7 @@ import {
   TouchableOpacity, Image, Text, View
 } from 'react-native';
 import { ThemeValueContext } from '@src/providers/ThemeProvider/ThemeProvider';
+import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
 
 const onboardImages = [
@@ -21,9 +22,13 @@ const onboardConstantTexts = [
 const TOTAL_INDEX = onboardImages.length - 1;
 
 export default function Onboarding() {
+
+  const navigation = useNavigation();
+
+  const theme = useContext(ThemeValueContext);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(currentIndex === TOTAL_INDEX);
-  const theme = useContext(ThemeValueContext);
 
   useEffect(() => {
     if (currentIndex === TOTAL_INDEX) {
@@ -33,7 +38,6 @@ export default function Onboarding() {
     }
   }, [currentIndex]);
 
-  console.log(isComplete);
 
   const onNext = () => {
     if (currentIndex !== TOTAL_INDEX) {
@@ -92,8 +96,16 @@ export default function Onboarding() {
         <TouchableOpacity onPress={onPrev}>
           <Text style={styles.prevButtonText}>Prev</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.nextButton, { backgroundColor: theme?.colorScheme.primary }]} onPress={onNext}>
-          <Text style={[styles.nextButtonText, { color: theme?.colorScheme.onPrimary }]}>{currentIndex !== onboardImages.length - 1 ? 'Next' : 'Get Started'}</Text>
+        <TouchableOpacity
+          style={[styles.nextButton, { backgroundColor: theme?.colorScheme.primary }]}
+          onPress={() => {
+            onNext();
+            if (isComplete) {
+              navigation.navigate('intro');
+            }
+          }}
+        >
+          <Text style={[styles.nextButtonText, { color: theme?.colorScheme.onPrimary }]}>{!isComplete ? 'Next' : 'Get Started'}</Text>
         </TouchableOpacity>
       </View>
     </View>
