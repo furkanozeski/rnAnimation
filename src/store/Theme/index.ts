@@ -12,6 +12,8 @@ const _light = {
   onSurface: '#303438',
   background: '#FFFFFF',
   textColor: '#000000',
+  warn: '#C17817',
+  error: '#B20D30',
 
 };
 
@@ -26,6 +28,8 @@ const _dark = {
   onSurface: '#C6C6C6',
   background: '#000000',
   textColor: '#FFFFFF',
+  warn: '#C17817',
+  error: '#B20D30',
 };
 
 const initialState: Theme = {
