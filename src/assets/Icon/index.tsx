@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { memo } from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
-
+// deneme
 
 function Index(props: SvgProps) {
   return (
